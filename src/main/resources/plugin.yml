@@ -1,5 +1,5 @@
 name: LengWhiteList
-version: 1.0
+version: 2.0
 main: org.leng.LengWhiteList
 commands:
   lwl:
