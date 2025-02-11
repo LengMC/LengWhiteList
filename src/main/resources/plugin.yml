@@ -1,0 +1,21 @@
+name: LengWhiteList
+version: 1.0
+main: org.leng.LengWhiteList
+commands:
+  lwl:
+    description: Manage whitelist
+    usage: /<command> <add|remove|list> [player]
+    permission: lwl.use
+permissions:
+  lwl.use:
+    description: "Base permission for using whitelist commands"
+    default: op
+  lwl.add:
+    description: "Permission to add players to the whitelist"
+    default: op
+  lwl.remove:
+    description: "Permission to remove players from the whitelist"
+    default: op
+  lwl.list:
+    description: "Permission to list players in the whitelist"
+    default: op
