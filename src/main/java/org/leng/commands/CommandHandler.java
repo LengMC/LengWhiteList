@@ -18,7 +18,7 @@ public class CommandHandler implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "用法: /lwl <add|remove|list> [玩家名]");
+            sender.sendMessage(ChatColor.RED + "用法: /lwl <add|remove|list|reload> [玩家名]");
             return true;
         }
 
@@ -49,8 +49,14 @@ public class CommandHandler implements CommandExecutor {
                     return true;
                 }
                 return handleListCommand(sender);
+            case "reload":
+                if (!sender.hasPermission("lwl.reload")) {
+                    sender.sendMessage(ChatColor.RED + "你没有权限重载配置。");
+                    return true;
+                }
+                return handleReloadCommand(sender);
             default:
-                sender.sendMessage(ChatColor.RED + "无效的子命令。用法: /lwl <add|remove|list> [玩家名]");
+                sender.sendMessage(ChatColor.RED + "无效的子命令。用法: /lwl <add|remove|list|reload> [玩家名]");
                 return true;
         }
     }
@@ -95,6 +101,12 @@ public class CommandHandler implements CommandExecutor {
                 sender.sendMessage(player);
             }
         }
+        return true;
+    }
+
+    private boolean handleReloadCommand(CommandSender sender) {
+        plugin.reloadConfig();
+        sender.sendMessage(ChatColor.GREEN + "配置已重载。");
         return true;
     }
 }

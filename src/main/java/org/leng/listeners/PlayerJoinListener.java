@@ -32,7 +32,7 @@ public class PlayerJoinListener implements Listener {
     }
 
     private boolean isFakePlayer(String playerName) {
-        // 假人名字通常以 "[Fake]" 开头
-        return playerName.startsWith("[Fake]");
+        // 假人名字通常以 "[Fake]" 开头，或者名字颜色为灰色
+        return playerName.startsWith("[Fake]") || playerName.startsWith(ChatColor.GRAY.toString());
     }
 }
